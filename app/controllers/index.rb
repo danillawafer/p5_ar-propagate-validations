@@ -9,9 +9,11 @@ get '/events/:id/show' do |id|
 end
 
 get '/events/new' do
-  #TODO IMPLEMENT ME
+  erb :event_form
 end
 
 post '/events/create' do
-  #TODO IMPLEMENT ME
+	check_errors
 end
+
+

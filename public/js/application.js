@@ -7,4 +7,21 @@ $(document).ready(function () {
     request.done(function () { window.location = "/"; });
   });
 
+  $('form').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+    type: this.method,
+    url: this.action,
+    dataType: "JSON",
+    data: $(this).serialize()
+
+    }).done(function(server_data){
+      if (server_data.errors === true) {
+        $('.errors').replaceWith(server_data.html);
+      }
+      else if (server_data.errors === false) {
+        (window.location = "/");
+      }
+    });
+  });
 });
